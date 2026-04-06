@@ -1,0 +1,8 @@
+**/.git
+**/.gitignore
+**/bin
+**/obj
+**/*.md
+**/Dockerfile
+**/.dockerignore
+**/weather_matcher.db

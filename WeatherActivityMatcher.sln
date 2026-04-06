@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{E34F3901-7B7D-4E3C-ABCC-F94D878A6E6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherActivityMatcher.Api", "backend\WeatherActivityMatcher.Api\WeatherActivityMatcher.Api.csproj", "{A214AB74-EE2D-45A1-A47E-822324C146BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherActivityMatcher.ServiceDefaults", "backend\WeatherActivityMatcher.ServiceDefaults\WeatherActivityMatcher.ServiceDefaults.csproj", "{64545A1D-1C26-4120-A986-4E0845032955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherActivityMatcher.AppHost", "backend\WeatherActivityMatcher.AppHost\WeatherActivityMatcher.AppHost.csproj", "{68B15567-2131-450B-9F67-60167AEBC330}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A214AB74-EE2D-45A1-A47E-822324C146BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A214AB74-EE2D-45A1-A47E-822324C146BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A214AB74-EE2D-45A1-A47E-822324C146BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A214AB74-EE2D-45A1-A47E-822324C146BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64545A1D-1C26-4120-A986-4E0845032955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64545A1D-1C26-4120-A986-4E0845032955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64545A1D-1C26-4120-A986-4E0845032955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64545A1D-1C26-4120-A986-4E0845032955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B15567-2131-450B-9F67-60167AEBC330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B15567-2131-450B-9F67-60167AEBC330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B15567-2131-450B-9F67-60167AEBC330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B15567-2131-450B-9F67-60167AEBC330}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A214AB74-EE2D-45A1-A47E-822324C146BF} = {E34F3901-7B7D-4E3C-ABCC-F94D878A6E6D}
+		{64545A1D-1C26-4120-A986-4E0845032955} = {E34F3901-7B7D-4E3C-ABCC-F94D878A6E6D}
+		{68B15567-2131-450B-9F67-60167AEBC330} = {E34F3901-7B7D-4E3C-ABCC-F94D878A6E6D}
+	EndGlobalSection
+EndGlobal
