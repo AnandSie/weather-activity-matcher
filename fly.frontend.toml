@@ -1,0 +1,32 @@
+# Fly.io configuration for the Weather Activity Matcher frontend
+# App name must be globally unique — change "weather-matcher-ui" if taken.
+# Deploy from the repo root:
+#   fly deploy --app weather-matcher-ui --config fly.frontend.toml --remote-only
+
+app = "weather-matcher-ui"
+primary_region = "ams"   # Match the API region
+
+[build]
+  dockerfile = "frontend/Dockerfile"
+
+[env]
+  # Update this to your actual API app name / custom domain if changed
+  API_UPSTREAM = "https://weather-matcher-api.fly.dev"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
+
+[http_service]
+  internal_port = 80
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    grace_period = "5s"
+    interval = "15s"
+    method = "GET"
+    path = "/nginx-health"
+    timeout = "3s"

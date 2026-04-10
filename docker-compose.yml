@@ -20,6 +20,8 @@ services:
   frontend:
     build:
       context: ./frontend
+    environment:
+      - API_UPSTREAM=http://api:5000
     ports:
       - "80:80"
     depends_on:

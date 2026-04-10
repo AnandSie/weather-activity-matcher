@@ -1,0 +1,42 @@
+# Fly.io configuration for the Weather Activity Matcher API
+# App name must be globally unique — change "weather-matcher-api" if taken.
+# Deploy from the ./backend directory:
+#   cd backend && fly deploy --app weather-matcher-api \
+#     --dockerfile WeatherActivityMatcher.Api/Dockerfile \
+#     --config ../fly.api.toml --remote-only
+
+app = "weather-matcher-api"
+primary_region = "ams"   # Amsterdam; alternatives: lhr, fra, sin, iad
+
+[build]
+  dockerfile = "WeatherActivityMatcher.Api/Dockerfile"
+
+[env]
+  ASPNETCORE_ENVIRONMENT = "Production"
+  ASPNETCORE_URLS = "http://+:5000"
+  ConnectionStrings__DefaultConnection = "Data Source=/data/weather_matcher.db"
+  # CORS_ORIGINS — set after frontend is deployed:
+  #   fly secrets set --app weather-matcher-api CORS_ORIGINS=https://weather-matcher-ui.fly.dev
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    grace_period = "20s"
+    interval = "15s"
+    method = "GET"
+    path = "/health"
+    timeout = "5s"
+
+[[mounts]]
+  source = "sqlite_data"
+  destination = "/data"
+  initial_size = "1gb"

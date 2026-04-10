@@ -42,11 +42,15 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "Weather Activity Matcher API", Version = "v1" });
 });
 
-// CORS for local development (Vite dev server)
+// CORS — reads CORS_ORIGINS env var (comma-separated), falls back to localhost for dev
+var corsOrigins = builder.Configuration["CORS_ORIGINS"] is { Length: > 0 } raw
+    ? raw.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+    : new[] { "http://localhost:5173", "http://localhost:80", "http://localhost" };
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
-        policy.WithOrigins("http://localhost:5173", "http://localhost:80", "http://localhost")
+        policy.WithOrigins(corsOrigins)
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
@@ -62,13 +66,11 @@ using (var scope = app.Services.CreateScope())
 
 app.UseCors();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllers();
-app.MapDefaultEndpoints(); // /health and /alive from ServiceDefaults
+app.MapDefaultEndpoints(); // /health and /alive from ServiceDefaults (Development only)
+app.MapHealthChecks("/health"); // Also register unconditionally for Production / Docker / Fly.io
 
 app.Run();
