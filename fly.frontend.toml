@@ -1,7 +1,7 @@
 # Fly.io configuration for the Weather Activity Matcher frontend
 # App name must be globally unique — change "weather-matcher-ui" if taken.
-# Deploy from the repo root:
-#   fly deploy --app weather-matcher-ui --config fly.frontend.toml --remote-only
+# Deploy from the frontend directory:
+#   cd frontend && fly deploy --app weather-matcher-ui --config ../fly.frontend.toml --remote-only
 
 app = "weather-matcher-ui"
 primary_region = "ams"   # Match the API region

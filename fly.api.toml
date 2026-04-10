@@ -9,7 +9,7 @@ app = "weather-matcher-api"
 primary_region = "ams"   # Amsterdam; alternatives: lhr, fra, sin, iad
 
 [build]
-  dockerfile = "WeatherActivityMatcher.Api/Dockerfile"
+  dockerfile = "backend/WeatherActivityMatcher.Api/Dockerfile"
 
 [env]
   ASPNETCORE_ENVIRONMENT = "Production"
