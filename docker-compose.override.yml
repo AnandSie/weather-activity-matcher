@@ -1,0 +1,8 @@
+# Development overrides: mount source for hot reload
+services:
+  api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - sqlite-data:/data
+      - ./backend/WeatherActivityMatcher.Api:/app/src
